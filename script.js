@@ -69,3 +69,24 @@ closeBtn.addEventListener("click", function(){
     popupContainer.style.display = "none";
 
 })
+
+
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const clientLogosContainer = document.getElementById("client-logos");
+
+let slideNo = 1;
+
+nextBtn.addEventListener("click", function(){
+    slideNo++;
+    console.log(clientLogosContainer.getBoundingClientRect().width)
+    clientLogosContainer.scrollLeft = clientLogosContainer.getBoundingClientRect().width;
+})
+
+prevBtn.addEventListener("click", function(){
+    if(slideNo > 1){   
+        slideNo--;
+        console.log(clientLogosContainer.getBoundingClientRect().width)
+        clientLogosContainer.scrollLeft = -clientLogosContainer.getBoundingClientRect().width;
+    }
+   })
