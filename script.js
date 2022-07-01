@@ -4,10 +4,18 @@ const workMenu = document.getElementById("work-menu")
 const popupContainer = document.getElementById("popup-container")
 const closeBtn = document.getElementById("close-popup")
 
-container.addEventListener("wheel", function(event){
-    event.preventDefault()
-    container.scrollLeft += event.deltaY
-})
+// container.addEventListener("wheel", function(event){
+//     event.preventDefault()
+//     container.scrollLeft += event.deltaY
+// })
+
+
+// window.addEventListener("scroll", function(event){
+//         event.preventDefault()
+//         window.scrollY = window.scrollX
+//     console.log(window.scrollY)
+//     container.scrollLeft = window.scrollX
+// })
 
 let bgOneWidth;
 let bgTwoWidth;
@@ -37,6 +45,29 @@ function getBgWidth(){
 
         scrollPosition()
     }
+
+    // setTimeout(function(){
+        let fullWidth = 0;
+        let boxes = document.getElementsByClassName("box");
+        for(let i=0; i<boxes.length;i++){
+            fullWidth += boxes[i].getBoundingClientRect().width;
+            // console.log(boxes[i].getBoundingClientRect().width)
+        }
+        // console.log(container.getBoundingClientRect().width)
+        console.log(fullWidth)
+        container.style.height = `${fullWidth}px`;
+        container.style.width = `${fullWidth}px`;
+    // },2000)
+    window.addEventListener("scroll", function(event){
+        event.preventDefault()
+        console.log(window.scrollY)
+        // window.scrollTo(0,window.scrollY)
+        // window.scrollTop(0)
+        // container.scrollLeft = `${window.scrollY}px`
+        if(window.scrollY <= fullWidth){
+            container.style.transform = `translateX(-${window.scrollY}px)`;
+        }
+    })
 
 }
 
