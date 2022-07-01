@@ -3,8 +3,10 @@ body{
     padding:0;
     background-color:white;
     width:100vw;
-    /* overflow-x:hidden; */
-    position:relative;
+    overflow:hidden;
+    /* position:relative; */
+    /* display:flex; */
+    /* justify-content: flex-start; */
 }
 
 img{
@@ -12,31 +14,59 @@ img{
     -webkit-user-drag: none;
 }
 
-#container{
-    background-color: pink;
+#outer-container{
+    background: cadetblue;
+    position:sticky;
+    top:0;
+    overflow:hidden;
+}
+
+.container{
+    /* background-color: pink; */
     /* white-space:nowrap; */
-    /* overflow:hidden; */
+    overflow:hidden;
     display:flex;
     position:relative;
 }
 
-::-webkit-scrollbar{
+/* .background-container{
+    position:absolute;
+    top:0;
+    z-index:1;
+} */
+
+#foreground-container{
+    pointer-events: none;
+    transform:translateY(-100%);
+    /* position:absolute; */
+    /* top:100px; */
+    /* min-height:100%; */
+    /* min-width:100%; */
+    z-index:200 !important;
+    /* background-color: cadetblue !important; */
+}
+
+#foreground-container .bg{
+    opacity:0;
+}
+
+/* ::-webkit-scrollbar{
     display:none;
     scrollbar-width: none;
     -webkit-scrollbar-width: none;
     -ms-overflow-style: none;
-}
+} */
 
 .box{
-    background-color:honeydew;
+    /* background-color:honeydew; */
     /* min-width:700px; */
     height:100vh;
     /* display: inline-block; */
     margin:0;
-    /* position:relative; */
-    position:sticky;
-    top:0;
-    z-index:95 !important;
+    position:relative;
+    /* position:sticky; */
+    /* top:0; */
+    /* z-index:95 !important; */
 }
 
 .box .bg{
@@ -238,7 +268,7 @@ button::before{
 }
 
 button:hover{
-    transform: translateY(15%);
+    transform: translateY(15%) !important;
     z-index:1 !important;
     cursor: pointer;
 }
