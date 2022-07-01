@@ -31,10 +31,15 @@ let fullWidth = 0;
 console.log(
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
 
+    console.log(
+        /(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i.test(navigator.userAgent))
+
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     
     console.log("mobile")
-    container[0].style.overflow = "auto"
+    bgContainer.style.overflow = "auto"
+    fgContainer.style.overflow = "auto"
+    fgContainer.style.display = "block"
 
    } else{
     console.log("not mobile")
