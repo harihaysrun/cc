@@ -3,8 +3,11 @@ const outerContainer = document.getElementById("outer-container")
 const container = document.getElementsByClassName("container")
 const bg = document.getElementsByClassName("bg")
 const workMenu = document.getElementById("work-menu")
-const popupContainer = document.getElementById("popup-container")
-const closeBtn = document.getElementById("close-popup")
+// const popupContainer = document.getElementById("popup-container")
+const popupContainer = document.getElementsByClassName("popup-container")
+// const closeBtn = document.getElementById("close-popup")
+const closeBtn = document.getElementsByClassName("close-popup")
+const reelBtn = document.getElementById("play-reel")
 
 const bgContainer = document.getElementById("background-container")
 const fgContainer = document.getElementById("foreground-container")
@@ -139,14 +142,20 @@ function workMenuPopup(){
 workMenu.addEventListener("click", function(){
     console.log("menu clicked!")
     // popupContainer.classList.add("overlay-appear")
-    popupContainer.style.display = "flex";
+    popupContainer[0].style.display = "flex";
 
 })
 
-closeBtn.addEventListener("click", function(){
-    popupContainer.style.display = "none";
+reelBtn.addEventListener("click", function(){
+    popupContainer[1].style.display = "flex";
 
 })
+
+for(let i=0;i<closeBtn.length;i++){
+    closeBtn[i].addEventListener("click", function(){
+        popupContainer[i].style.display = "none";
+    })
+}
 
 
 const nextBtn = document.getElementById("next");
