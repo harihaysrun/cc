@@ -38,12 +38,12 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     
     console.log("mobile")
     bgContainer.style.overflow = "auto"
-    fgContainer.style.overflow = "auto"
-    fgContainer.style.display = "block"
+    // fgContainer.style.overflow = "auto"
+    // fgContainer.style.display = "block"
 
    } else{
     console.log("not mobile")
-    window.addEventListener("wheel", function(event){
+    container[0].addEventListener("wheel", function(event){
         // event.preventDefault()
         // event.stopImmediatePropagation()
         bgContainer.scrollLeft += event.deltaY
