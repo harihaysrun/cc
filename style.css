@@ -7,7 +7,6 @@ body{
     /* position:relative; */
     /* display:flex; */
     /* justify-content: flex-start; */
-    touch-action: none;
 }
 
 img{
@@ -28,6 +27,7 @@ img{
     overflow:hidden;
     display:flex;
     position:relative;
+    touch-action: pan-x;
 }
 
 /* .background-container{
