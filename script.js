@@ -209,7 +209,6 @@ workMenu.addEventListener("click", function(){
 
 reelBtn.addEventListener("click", function(){
     popupContainer[1].style.display = "flex";
-
 })
 
 for(let i=0;i<closeBtn.length;i++){
