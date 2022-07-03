@@ -67,7 +67,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 //     container.scrollLeft = window.scrollX
 // })
 
-window.addEventListener("load", getBgWidth);
+// window.addEventListener("load", getBgWidth);
 // window.addEventListener("resize", getBgWidth);
 function scrollPosition(){
     container[0].addEventListener("scroll", function(){
@@ -81,17 +81,17 @@ function scrollPosition(){
 }
 
 function getBgWidth(){
-    bgOneWidth = bg[0].getBoundingClientRect().width;
-    bgTwoWidth = bg[1].getBoundingClientRect().width;
-    changePosition()
+    // bgOneWidth = bg[0].getBoundingClientRect().width;
+    // bgTwoWidth = bg[1].getBoundingClientRect().width;
+    // changePosition()
 
-    if(window.innerWidth > (bgOneWidth * 1.75) ){
-        // workMenu.style.display = "block"
-        workMenu.classList.add("work-menu-appear")
-    } else {
+    // if(window.innerWidth > (bgOneWidth * 1.75) ){
+    //     // workMenu.style.display = "block"
+    //     workMenu.classList.add("work-menu-appear")
+    // } else {
 
-        scrollPosition()
-    }
+    //     scrollPosition()
+    // }
 
     // setTimeout(function(){
         let boxes = document.getElementsByClassName("box");

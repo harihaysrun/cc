@@ -79,27 +79,36 @@ img{
     height:100%;
 }
 
-#work-menu{
+.work-menu{
+    /* background-color:honeydew; */
     position:absolute;
-    /* top:32vw; */
-    /* left:83vw; */
-    /* width:13vw; */
-    width:15%;
-    top:45%;
-    /* width:150px; */
-    /* aspect-ratio: 9/16; */
-    /* top:32vh; */
-    /* left:83vh; */
+    left:0;
+    top:44%;
+    width:8%;
     z-index:10;
-    /* display: none; */
-    /* transform: scale(0); */
-    transform: scale(0);
 }
 
-#work-menu:hover{
-    transform: scale(1.01) !important;
-    cursor: pointer;
+.work-menu img{
+    width:100%;
 }
+
+/* #work-menu{
+    position: absolute;
+    top:7%;
+    left:0;
+    right:0;
+    margin: auto;
+    height:52.5%;
+    width: 77.5%;
+    box-sizing: border-box;
+    border:3px solid black;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:3vw;
+    opacity:0;
+    color:white;
+} */
 
 .work-menu-appear{
     animation: 0.5s popup ease-in-out;
@@ -128,11 +137,13 @@ img{
 }
 
 .projects-container{
-    /* background-color: white; */
-    width:30%;
-    position: relative;
+    background-color: white;
+    width:100%;
+    height:100%;
     border-radius:25px;
+    box-sizing: border-box;
     border:3px solid black;
+    overflow-y:scroll;
 }
 
 .overlay-appear{
@@ -145,8 +156,8 @@ img{
 
 .close-popup{
     position:absolute;
-    right:-25px;
-    top:-25px;
+    right:15px;
+    top:15px;
     background-color: red;
     color:white;
     width:50px;
@@ -156,6 +167,7 @@ img{
     justify-content: center;
     border-radius: 50%;
     visibility: visible;
+    z-index:500;
 }
 
 .project-title{
@@ -164,6 +176,8 @@ img{
     padding: 5% 7%;
     border-radius:25px 25px 0 0;
     border-bottom:3px solid black;
+    position:sticky;
+    top:0;
 }
 
 #projects{
@@ -171,8 +185,8 @@ img{
     box-sizing: border-box;
     padding: 5% 7% 0 7%;
     border-radius:0 0 25px 25px;
-    height:65vh;
-    overflow-y:scroll;
+    /* height:65vh; */
+    /* height:90%; */
 }
 
 .indiv-project{
@@ -197,8 +211,8 @@ img{
 }
 
 .video-container{
-    background-color: white;
-    width:80%;
+    background-color: honeydew;
+    width:50%;
     aspect-ratio: 16/9;
     display:flex;
     align-items: center;
@@ -217,6 +231,7 @@ h2{
 }
 
 .character{
+    /* background-color: #8024E5; */
     position:fixed;
     top:45%;
     left:100px;
@@ -228,6 +243,90 @@ h2{
     /* height:4%; */
     z-index:98 !important;
     pointer-events: none;
+}
+
+.character img{
+    height:100%;
+}
+
+.balloon{
+    /* background-color: #DCCDFF; */
+    position:absolute;
+    top:-10%;
+    right:-5%;
+    width:33.5%;
+    /* height:34%; */
+    height:85%;
+    display:flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* font-size:3vw; */
+    pointer-events: visible;
+    /* transform:rotate(10deg); */
+    animation: 0.5s bounce ease-in-out;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    color:white;
+    z-index:1;
+}
+
+
+@keyframes bounce {
+    from{transform: translateY(-10px) rotate(10deg)}
+    to{transform: translateY(0) rotate(10deg)}
+}
+
+/* i, .text{
+    z-index:1;
+} */
+
+.balloon img{
+    /* opacity:0.5; */
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:auto;
+    /* z-index:-100; */
+}
+
+.text{
+    width: 98%;
+    height:40.9%;
+    box-sizing: border-box;
+    border:4px solid transparent;
+    border-radius:100%;
+    z-index:5;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:1vw;
+    padding:0 1vw;
+    text-align: center;
+}
+
+.text i, .text span{
+    transform:rotate(-10deg);
+}
+
+.text i{
+    display:none;
+    z-index:100;
+}
+
+.text:hover span{
+    display:none;
+}
+
+.text:hover i{
+    display:block;
+    font-size:3vw;
+}
+
+.text:hover{
+    cursor: pointer;
+    background-color: rgb(78, 170, 166,0.5);
+    border:4px solid black;
 }
 
 .foreground{
@@ -413,4 +512,18 @@ button:hover::before{
 .buttons:hover{
     opacity:0.8;
     cursor:pointer;
+}
+
+@media only screen and (min-width: 768px){
+
+    .projects-container{
+        width:650px;
+        height:70%;
+    }
+
+    /* .close-popup{
+        right:-25px;
+        top:-25px;
+    } */
+
 }
