@@ -1,25 +1,21 @@
-// const container = document.getElementById("container")
+const container = document.getElementById("container")
 const outerContainer = document.getElementById("outer-container")
-const container = document.getElementsByClassName("container")
 const boxes = document.getElementsByClassName("box")
 const bg = document.getElementsByClassName("bg")
 const character = document.querySelector(".character")
 const balloon = document.querySelector(".balloon")
 const balloonText = document.getElementById("balloon-text")
 const workMenu = document.getElementById("work-menu")
-// const popupContainer = document.getElementById("popup-container")
 const popupContainer = document.getElementsByClassName("popup-container")
-// const closeBtn = document.getElementById("close-popup")
 const closeBtn = document.getElementsByClassName("close-popup")
 const reelBtn = document.getElementById("play-reel")
-
-const bgContainer = document.getElementById("background-container")
-const fgContainer = document.getElementById("foreground-container")
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const clientLogosContainer = document.getElementById("client-logos");
 
 let bgOneWidth;
 let bgTwoWidth;
 let fullWidth = 0;
-
 
 window.addEventListener("load", getBgHeight);
 window.addEventListener("resize", getBgHeight);
@@ -30,47 +26,19 @@ function getBgHeight(){
     }
 }
 
-// container[0].addEventListener("wheel", function(event){
-//     event.preventDefault()
-//     container[0].scrollLeft += event.deltaY
-// })
-
-// container[0].addEventListener("scroll", function(event){
-//     if(window.scrollX >= (bg[0].getBoundingClientRect().width / 2)){
-//         console.log("balloon apear!")
-//     }
-// })
-
-// function balloonPopup(){
-//     if(window.scrollX >= (bg[0].getBoundingClientRect().width / 2) ){
-//     // ||
-//         // scrollPos >= (bg[0].getBoundingClientRect().width / 2)){
-//         console.log("balloon apear!")
-//     }
-// }
-
-// // console.log(container.length)
-// for(i=0;i<container.length;i++){
-//     console.log(container[i])
-//     container[i].addEventListener("wheel", function(event){
-//         event.preventDefault()
-//         container[i].scrollLeft += event.deltaY
-//     })
-// }
-
 console.log(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
 console.log(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i.test(navigator.userAgent))
 
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     
     console.log("mobile")
-    bgContainer.style.overflowY = "hidden"
-    bgContainer.style.overflowX = "auto"
+    container.style.overflowY = "hidden"
+    container.style.overflowX = "auto"
     // fgContainer.style.overflow = "auto"
     // fgContainer.style.display = "block"
     let prevPos = 0;
-    container[0].addEventListener("scroll", function(){
-        let currentPos = container[0].scrollLeft;
+    container.addEventListener("scroll", function(){
+        let currentPos = container.scrollLeft;
         if(currentPos > prevPos){
             if(currentPos > (bg[0].getBoundingClientRect().width / 5) ){
                 balloon.style.display = "flex"
@@ -89,7 +57,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 
 } else{
     console.log("not mobile")
-    container[0].addEventListener("wheel", function(event){
+    container.addEventListener("wheel", function(event){
         // event.preventDefault()
         // event.stopImmediatePropagation()
         if(event.deltaY < 0){
@@ -103,10 +71,10 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
             // character.style.transform = "rotateY(0deg)"
             // balloonText.style.transform = "rotateY(0deg)"
         }
-        bgContainer.scrollLeft += event.deltaY
+        container.scrollLeft += event.deltaY
         // fgContainer.scrollLeft += event.deltaY
-        // console.log(bgContainer.scrollLeft)
-        if(bgContainer.scrollLeft > (bg[0].getBoundingClientRect().width / 5)){
+        // console.log(container.scrollLeft)
+        if(container.scrollLeft > (bg[0].getBoundingClientRect().width / 5)){
             console.log("balloon apear!")
             balloon.style.display = "flex"
         } else {
@@ -131,9 +99,9 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 // window.addEventListener("load", getBgWidth);
 // window.addEventListener("resize", getBgWidth);
 function scrollPosition(){
-    container[0].addEventListener("scroll", function(){
+    container.addEventListener("scroll", function(){
         // else {
-            if (container[0].scrollLeft > (bgOneWidth - (window.innerWidth / 2))){
+            if (container.scrollLeft > (bgOneWidth - (window.innerWidth / 2))){
                 // workMenu.style.display = "block"
                 workMenu.classList.add("work-menu-appear")
             }
@@ -162,8 +130,8 @@ function getBgWidth(){
         }
         // console.log(container.getBoundingClientRect().width)
         console.log(fullWidth)
-        container[0].style.height = `${fullWidth}px`;
-        // container[0].style.height = `${fullWidth}px`;
+        container.style.height = `${fullWidth}px`;
+        // container.style.height = `${fullWidth}px`;
 
     // },2000)
     window.addEventListener("scroll", function(event){
@@ -173,9 +141,9 @@ function getBgWidth(){
         // window.scrollTop(0)
         // container.scrollLeft = `${window.scrollY}px`
         if(window.scrollY <= fullWidth){
-            // bgContainer
+            // container
 // fgContainer
-            container[0].style.transform = `translateX(-${window.scrollY}px)`;
+            container.style.transform = `translateX(-${window.scrollY}px)`;
             // fgContainer.style.transform = `translateX(-${window.scrollY}px)`;
         }
     })
@@ -216,11 +184,6 @@ for(let i=0;i<closeBtn.length;i++){
         popupContainer[i].style.display = "none";
     })
 }
-
-
-const nextBtn = document.getElementById("next");
-const prevBtn = document.getElementById("prev");
-const clientLogosContainer = document.getElementById("client-logos");
 
 let slideNo = 1;
 
