@@ -2,6 +2,9 @@
 const outerContainer = document.getElementById("outer-container")
 const container = document.getElementsByClassName("container")
 const bg = document.getElementsByClassName("bg")
+const character = document.querySelector(".character")
+const balloon = document.querySelector(".balloon")
+const balloonText = document.getElementById("balloon-text")
 const workMenu = document.getElementById("work-menu")
 // const popupContainer = document.getElementById("popup-container")
 const popupContainer = document.getElementsByClassName("popup-container")
@@ -22,6 +25,24 @@ let fullWidth = 0;
 //     container[0].scrollLeft += event.deltaY
 // })
 
+// container[0].addEventListener("scroll", function(event){
+//     if(window.scrollX >= (bg[0].getBoundingClientRect().width / 2)){
+//         console.log("balloon apear!")
+//     }
+// })
+
+function balloonPopup(){
+    if(window.scrollX >= (bg[0].getBoundingClientRect().width / 2) ){
+    // ||
+        // scrollPos >= (bg[0].getBoundingClientRect().width / 2)){
+        console.log("balloon apear!")
+    }
+}
+
+container[0].addEventListener("scroll", function(){
+    console.log(container[0].scrollLeft)
+})
+
 // // console.log(container.length)
 // for(i=0;i<container.length;i++){
 //     console.log(container[i])
@@ -31,26 +52,59 @@ let fullWidth = 0;
 //     })
 // }
 
-console.log(
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+console.log(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+console.log(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i.test(navigator.userAgent))
 
-    console.log(
-        /(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i.test(navigator.userAgent))
-
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     
     console.log("mobile")
     bgContainer.style.overflow = "auto"
     // fgContainer.style.overflow = "auto"
     // fgContainer.style.display = "block"
+    let prevPos = 0;
+    container[0].addEventListener("scroll", function(){
+        let currentPos = container[0].scrollLeft;
+        if(currentPos > prevPos){
+            if(currentPos > (bg[0].getBoundingClientRect().width / 5) ){
+                balloon.style.display = "flex"
+            }
+            character.classList.remove('character-backwards');
+            balloonText.classList.remove('balloon-text-backwards');
+        } else{
+            if(currentPos < (bg[0].getBoundingClientRect().width / 5) ){
+                balloon.style.display = "none"
+            }
+            character.classList.add('character-backwards');
+            balloonText.classList.add('balloon-text-backwards');
+        }
+        prevPos = currentPos;
+    })
 
-   } else{
+} else{
     console.log("not mobile")
     container[0].addEventListener("wheel", function(event){
         // event.preventDefault()
         // event.stopImmediatePropagation()
+        if(event.deltaY < 0){
+            character.classList.add('character-backwards');
+            balloonText.classList.add('balloon-text-backwards');
+            // balloonText.style.transform = "rotateY(180deg)"
+            // balloonText[0].style.backgroundColor = "pink"
+        } else{
+            character.classList.remove('character-backwards');
+            balloonText.classList.remove('balloon-text-backwards');
+            // character.style.transform = "rotateY(0deg)"
+            // balloonText.style.transform = "rotateY(0deg)"
+        }
         bgContainer.scrollLeft += event.deltaY
         // fgContainer.scrollLeft += event.deltaY
+        // console.log(bgContainer.scrollLeft)
+        if(bgContainer.scrollLeft > (bg[0].getBoundingClientRect().width / 5)){
+            console.log("balloon apear!")
+            balloon.style.display = "flex"
+        } else {
+            balloon.style.display = "none"
+        }
     })
         
 }
