@@ -60,13 +60,12 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
     container.addEventListener("wheel", function(event){
         if(event.deltaY > 0){
             if(container.scrollLeft > (bg[0].getBoundingClientRect().width / 5)){
-                console.log("balloon apear!");
                 balloon.style.display = "flex";
             }
             character.classList.remove('character-backwards');
             balloonText.classList.remove('balloon-text-backwards');
         } else{
-            if(container.scrollLeft< (bg[0].getBoundingClientRect().width / 5)){
+            if(container.scrollLeft < (bg[0].getBoundingClientRect().width / 5)){
                 balloon.style.display = "none";
             }
             character.classList.add('character-backwards');
