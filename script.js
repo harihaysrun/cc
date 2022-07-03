@@ -1,6 +1,7 @@
 // const container = document.getElementById("container")
 const outerContainer = document.getElementById("outer-container")
 const container = document.getElementsByClassName("container")
+const boxes = document.getElementsByClassName("box")
 const bg = document.getElementsByClassName("bg")
 const character = document.querySelector(".character")
 const balloon = document.querySelector(".balloon")
@@ -20,6 +21,15 @@ let bgTwoWidth;
 let fullWidth = 0;
 
 
+window.addEventListener("load", getBgHeight);
+window.addEventListener("resize", getBgHeight);
+
+function getBgHeight(){
+    for (box of boxes){
+        box.style.height = `${window.innerHeight}px`;
+    }
+}
+
 // container[0].addEventListener("wheel", function(event){
 //     event.preventDefault()
 //     container[0].scrollLeft += event.deltaY
@@ -31,17 +41,13 @@ let fullWidth = 0;
 //     }
 // })
 
-function balloonPopup(){
-    if(window.scrollX >= (bg[0].getBoundingClientRect().width / 2) ){
-    // ||
-        // scrollPos >= (bg[0].getBoundingClientRect().width / 2)){
-        console.log("balloon apear!")
-    }
-}
-
-container[0].addEventListener("scroll", function(){
-    console.log(container[0].scrollLeft)
-})
+// function balloonPopup(){
+//     if(window.scrollX >= (bg[0].getBoundingClientRect().width / 2) ){
+//     // ||
+//         // scrollPos >= (bg[0].getBoundingClientRect().width / 2)){
+//         console.log("balloon apear!")
+//     }
+// }
 
 // // console.log(container.length)
 // for(i=0;i<container.length;i++){
@@ -58,7 +64,8 @@ console.log(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i.test(navigator.userAgent
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     
     console.log("mobile")
-    bgContainer.style.overflow = "auto"
+    bgContainer.style.overflowY = "hidden"
+    bgContainer.style.overflowX = "auto"
     // fgContainer.style.overflow = "auto"
     // fgContainer.style.display = "block"
     let prevPos = 0;

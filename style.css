@@ -29,6 +29,7 @@ img{
     display:flex;
     position:relative;
     touch-action: pan-x;
+    background-clip: border-box !important;
 }
 
 /* .background-container{
@@ -66,7 +67,7 @@ img{
 .box{
     /* background-color:honeydew; */
     /* min-width:700px; */
-    height:100vh;
+    /* height:100vh; */
     /* display: inline-block; */
     margin:0;
     position:relative;
@@ -234,7 +235,7 @@ h2{
     /* background-color: #8024E5; */
     position:fixed;
     top:45%;
-    left:40px;
+    left:45px;
     /* width:27%; */
     height:40%;
     /* top:45%; */
