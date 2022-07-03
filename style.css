@@ -42,34 +42,11 @@ img{
 .box{
     margin:0;
     position:relative;
+    height:100vh;
 }
 
 .box .bg{
     height:100%;
-}
-
-.work-menu{
-    /* background-color:honeydew; */
-    position:absolute;
-    left:0;
-    top:44%;
-    width:8%;
-    z-index:10;
-}
-
-.work-menu img{
-    width:100%;
-}
-
-.work-menu-appear{
-    animation: 0.5s popup ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-@keyframes popup {
-    0%{transform: scale(0);}
-    50%{transform: scale(1.01);}
-    100%{transform: scale(1);}
 }
 
 .popup-container{
@@ -502,6 +479,19 @@ button:hover::before{
     cursor:pointer;
 }
 
+#prev{
+    opacity:0.2;
+}
+
+.prev-active{
+    opacity:1 !important;
+}
+
+.next-inactive{
+    opacity:0.2 !important;
+    pointer-events:none;
+}
+
 .contact-us-door{
     /* background-color:palegoldenrod; */
     height:100%;
@@ -525,6 +515,10 @@ button:hover::before{
         width:650px;
         height:70%;
         border-radius:25px;
+    }
+
+    .project-title{
+        border-radius:25px 25px 0 0;
     }
 
     .video-container, iframe{

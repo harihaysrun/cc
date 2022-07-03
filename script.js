@@ -29,13 +29,13 @@ function getBgHeight(){
 console.log(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
 console.log(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i.test(navigator.userAgent))
 
+// detect if device is mobile = swipe left & right. if not mobile, use scroll
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     
     console.log("mobile")
-    container.style.overflowY = "hidden"
-    container.style.overflowX = "auto"
-    // fgContainer.style.overflow = "auto"
-    // fgContainer.style.display = "block"
+    container.style.overflowY = "hidden";
+    container.style.overflowX = "auto";
+
     let prevPos = 0;
     container.addEventListener("scroll", function(){
         let currentPos = container.scrollLeft;
@@ -58,119 +58,27 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
 } else{
     console.log("not mobile")
     container.addEventListener("wheel", function(event){
-        // event.preventDefault()
-        // event.stopImmediatePropagation()
-        if(event.deltaY < 0){
-            character.classList.add('character-backwards');
-            balloonText.classList.add('balloon-text-backwards');
-            // balloonText.style.transform = "rotateY(180deg)"
-            // balloonText[0].style.backgroundColor = "pink"
-        } else{
+        if(event.deltaY > 0){
+            if(container.scrollLeft > (bg[0].getBoundingClientRect().width / 5)){
+                console.log("balloon apear!");
+                balloon.style.display = "flex";
+            }
             character.classList.remove('character-backwards');
             balloonText.classList.remove('balloon-text-backwards');
-            // character.style.transform = "rotateY(0deg)"
-            // balloonText.style.transform = "rotateY(0deg)"
+        } else{
+            if(container.scrollLeft< (bg[0].getBoundingClientRect().width / 5)){
+                balloon.style.display = "none";
+            }
+            character.classList.add('character-backwards');
+            balloonText.classList.add('balloon-text-backwards');
         }
-        container.scrollLeft += event.deltaY
-        // fgContainer.scrollLeft += event.deltaY
-        // console.log(container.scrollLeft)
-        if(container.scrollLeft > (bg[0].getBoundingClientRect().width / 5)){
-            console.log("balloon apear!")
-            balloon.style.display = "flex"
-        } else {
-            balloon.style.display = "none"
-        }
+        container.scrollLeft += event.deltaY;
+        
     })
         
 }
 
-// fgContainer.addEventListener("wheel", function(event){
-//     event.preventDefault()
-//     fgContainer.scrollLeft += event.deltaY
-// })
-
-// window.addEventListener("scroll", function(event){
-//         event.preventDefault()
-//         window.scrollY = window.scrollX
-//     console.log(window.scrollY)
-//     container.scrollLeft = window.scrollX
-// })
-
-// window.addEventListener("load", getBgWidth);
-// window.addEventListener("resize", getBgWidth);
-function scrollPosition(){
-    container.addEventListener("scroll", function(){
-        // else {
-            if (container.scrollLeft > (bgOneWidth - (window.innerWidth / 2))){
-                // workMenu.style.display = "block"
-                workMenu.classList.add("work-menu-appear")
-            }
-        // }
-    });
-}
-
-function getBgWidth(){
-    // bgOneWidth = bg[0].getBoundingClientRect().width;
-    // bgTwoWidth = bg[1].getBoundingClientRect().width;
-    // changePosition()
-
-    // if(window.innerWidth > (bgOneWidth * 1.75) ){
-    //     // workMenu.style.display = "block"
-    //     workMenu.classList.add("work-menu-appear")
-    // } else {
-
-    //     scrollPosition()
-    // }
-
-    // setTimeout(function(){
-        let boxes = document.getElementsByClassName("box");
-        for(let i=0; i<(boxes.length / 2);i++){
-            fullWidth += boxes[i].getBoundingClientRect().width;
-            // console.log(boxes[i].getBoundingClientRect().width)
-        }
-        // console.log(container.getBoundingClientRect().width)
-        console.log(fullWidth)
-        container.style.height = `${fullWidth}px`;
-        // container.style.height = `${fullWidth}px`;
-
-    // },2000)
-    window.addEventListener("scroll", function(event){
-        event.preventDefault()
-        console.log(window.scrollY)
-        // window.scrollTo(0,window.scrollY)
-        // window.scrollTop(0)
-        // container.scrollLeft = `${window.scrollY}px`
-        if(window.scrollY <= fullWidth){
-            // container
-// fgContainer
-            container.style.transform = `translateX(-${window.scrollY}px)`;
-            // fgContainer.style.transform = `translateX(-${window.scrollY}px)`;
-        }
-    })
-
-}
-
-function changePosition(){
-    workMenu.style.left = `${bgOneWidth}px`;
-}
-
-function workMenuPopup(){
-    // console.log(container.scrollLeft)
-    console.log(workMenu.getBoundingClientRect().left)
-    // if (workMenu.getBoundingClientRect().left <= (window.innerWidth)){
-    if (workMenu.getBoundingClientRect().left <= 500){
-        // workMenu.style.display = "block"
-        workMenu.classList.add("work-menu-appear")
-    } 
-    // else {
-    //     workMenu.style.display = "none"
-    // }
-}
-
-
 workMenu.addEventListener("click", function(){
-    console.log("menu clicked!")
-    // popupContainer.classList.add("overlay-appear")
     popupContainer[0].style.display = "flex";
 
 })
@@ -185,38 +93,21 @@ for(let i=0;i<closeBtn.length;i++){
     })
 }
 
+// dummy carousel
 let slideNo = 1;
 
 nextBtn.addEventListener("click", function(){
     slideNo++;
-    console.log(clientLogosContainer.getBoundingClientRect().width)
+    prevBtn.classList.add('prev-active');
+    nextBtn.classList.add('next-inactive');
     clientLogosContainer.scrollLeft = clientLogosContainer.getBoundingClientRect().width;
 })
 
 prevBtn.addEventListener("click", function(){
     if(slideNo > 1){   
         slideNo--;
-        console.log(clientLogosContainer.getBoundingClientRect().width)
+        prevBtn.classList.remove('prev-active');
+        nextBtn.classList.remove('next-inactive');
         clientLogosContainer.scrollLeft = -clientLogosContainer.getBoundingClientRect().width;
-    }
-   })
-
-// window.addEventListener("touchstart", touchStart, false);
-// window.addEventListener("touchmove", touchMove, false);
-
-// var start = {x:0, y:0};
-
-// function touchStart(event) {
-//   start.x = event.touches[0].pageX;
-//   start.y = event.touches[0].pageY;
-// }
-
-// function touchMove(event) {
-//   offset = {};
-
-//   offset.x = start.x - event.touches[0].pageX;
-//   offset.y = start.y - event.touches[0].pageY;
-
-//   return offset;  
-// }
-
+    } 
+})
