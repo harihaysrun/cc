@@ -523,15 +523,19 @@ button:hover::before{
         border-radius:20px 20px 0 0;
     }
 
-    .video-container, iframe{
-        max-width:1500px;
-    }
-
     .reel-box button{
         opacity:0;
     }
     
     .reel-box:hover button{
         opacity:1;
+    }
+}
+
+@media (min-aspect-ratio: 3/2){
+
+    .video-container, .video-container iframe{
+        height:80vh;
+        width:auto;
     }
 }
